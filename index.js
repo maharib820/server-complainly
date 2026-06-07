@@ -101,7 +101,7 @@ async function run() {
     const server = http.createServer(app);
     const io = new Server(server, {
       cors: {
-        origin: process.env.FRONTEND_URL || "https://client-complainly.vercel.app", 
+        origin: process.env.FRONTEND_URL || "https://client-complainly.vercel.app",
         methods: ["GET", "POST"]
       }
     });
@@ -1153,6 +1153,10 @@ async function run() {
           firebaseUid: firebaseUser.uid,
           createdAt: new Date(),
         });
+
+        console.log("Sending mail to:", email);
+        console.log("Sender Email User:", process.env.EMAIL_USER);
+        console.log("Sender Email Pass exists:", !!process.env.EMAIL_PASS);
 
         const mailOptions = {
           from: `"Complainly" <${process.env.EMAIL_USER}>`,
