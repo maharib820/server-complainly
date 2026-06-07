@@ -16,7 +16,7 @@ app.use(express.json());
 
 // ---------- Firebase Admin Initialization ----------
 if (!admin.apps.length) {
-  const serviceAccount = require(process.env.FIREBASE_ADMIN_SDK);
+  const serviceAccount = JSON.parse(process.env.FIREBASE_ADMIN_SDK);
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   });
